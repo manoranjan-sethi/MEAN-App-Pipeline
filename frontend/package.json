@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "start:static": "npx serve dist/angular-15-crud -p 8081"
   },
   "private": true,
   "dependencies": {

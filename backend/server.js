@@ -1,7 +1,10 @@
 const express = require("express");
-//const cors = require("cors");
+const cors = require("cors");
 
 const app = express();
+
+// allow frontend origin (required when frontend is on a different port)
+app.use(cors());
 
 // parse requests of content-type - application/json
 app.use(express.json());
