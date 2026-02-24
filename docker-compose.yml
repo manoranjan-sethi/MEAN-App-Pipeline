@@ -8,6 +8,7 @@ services:
       - mongo_data:/data/db
 
   backend:
+    image: ${DOCKER_USERNAME:-local}/mean-backend:latest
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -20,6 +21,7 @@ services:
       - mongo
 
   frontend:
+    image: ${DOCKER_USERNAME:-local}/mean-frontend:latest
     build:
       context: ./frontend
       dockerfile: Dockerfile
