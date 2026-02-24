@@ -3,6 +3,8 @@ name: CI/CD MEAN Stack Deployment
 on:
   push:
     branches: [ "main" ]
+    paths-ignore:
+      - '**.md'
 
 jobs:
   build-and-deploy:
