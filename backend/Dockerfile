@@ -1,7 +1,7 @@
 FROM node:20-slim AS builder
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci
+RUN npm install
 
 FROM node:20-slim
 RUN apt-get update && apt-get install -y --no-install-recommends dumb-init \
