@@ -73,6 +73,7 @@ Once secrets are configured, any code pushed to the `main` branch (excluding cha
 
 ### 4. Nginx Setup and Infrastructure Details
 *Nginx reverse proxy routing configured within the frontend container, alongside the locked-down AWS Security Group.*
+
 > [![Infra Details](screenshots/Pasted_image_(4).png)]
 
 > [![AWS SG](screenshots/Pasted_image_(5).png)]
