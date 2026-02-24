@@ -60,19 +60,19 @@ Once secrets are configured, any code pushed to the `main` branch will automatic
 
 ### 1. CI/CD Configuration and Execution
 *Successful execution of the GitHub Actions workflow showing Build, Push, and Deploy steps.*
-> [![GitHub Actions workflow ](<Pasted image.png>)]
+> [![GitHub Actions workflow ](screenshots/Pasted_image.png)]
 
 ### 2. Docker Image Build and Push Process
 *Artifacts successfully pushed to the Docker Hub registry.*
-> [![Docker Hub Image](<Pasted image (2).png>)]
+> [![Docker Hub Image](screenshots/Pasted_image_(2).png)]
 
 ### 3. Application Deployment and Working UI
 *The application running live on the EC2 instance, accessible purely via Port 80 without port definitions.*
 **Live URL:** `http://3.83.123.167`
-> [![App Hosted in ec2](<Pasted image (3).png>)]
+> [![App Hosted in ec2](screenshots/Pasted_image_(3).png)]
 
 ### 4. Nginx Setup and Infrastructure Details
 *Nginx reverse proxy routing configured within the frontend container, alongside the locked-down AWS Security Group.*
-> [![Infra Details](<Pasted image (4).png>)]
+> [![Infra Details](screenshots/Pasted_image_(4).png)]
 
-> [![AWS SG](<Pasted image (5).png>)]
+> [![AWS SG](screenshots/Pasted_image_(5).png)]
