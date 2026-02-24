@@ -8,7 +8,7 @@ The deployment is fully automated using GitHub Actions, containerized via Docker
 -  **Repository Setup:** Code pushed to GitHub.
 -  **Containerization:** Dockerfiles created for both frontend and backend. Docker Compose used for orchestration.
 -  **Database Setup:** Utilized the official MongoDB Docker image.
--  **CI/CD Pipeline:** GitHub Actions workflow configured to build, push to Docker Hub, and deploy automatically to EC2 on push.
+-  **CI/CD Pipeline:** GitHub Actions workflow configured to build, push to Docker Hub (tagged with commit hash), and deploy automatically to EC2 on push.
 -  **Nginx Reverse Proxy:** Nginx configured to route all traffic seamlessly over Port 80.
 
 ---
@@ -23,7 +23,7 @@ The deployment is fully automated using GitHub Actions, containerized via Docker
 
 ## 🔒 DevSecOps & Security Highlights
 * **Principle of Least Privilege (Network):** AWS Security Group is strictly limited to Ports 80 (HTTP), 443 (HTTPS), and 22 (SSH). Container ports (8080, 8082, 27017) are deliberately closed to the public internet to prevent direct access/bypassing of the Nginx proxy.
-* **Immutable Artifacts:** The CI/CD pipeline uses `docker pull` for deployment rather than rebuilding on the host, ensuring the exact artifact tested in CI is what runs in production.
+* **Immutable Artifacts:** The CI/CD pipeline tags images with the Git commit hash (short SHA) and uses `docker pull` for deployment rather than rebuilding on the host, ensuring the exact artifact tested in CI is what runs in production.
 * **Secret Management:** All sensitive credentials (Docker Hub tokens, SSH keys, Host IPs) are encrypted and injected via GitHub Actions Secrets.
 
 ---
@@ -47,12 +47,12 @@ To deploy this project to your own environment, configure the following **Reposi
 * `SSH_PRIVATE_KEY`: The `.pem` private key for SSH access.
 
 ### 3. Triggering the Deployment
-Once secrets are configured, any code pushed to the `main` branch will automatically trigger the `.github/workflows/deploy.yml` pipeline.
+Once secrets are configured, any code pushed to the `main` branch (excluding changes to `.md` files only) will automatically trigger the `.github/workflows/deploy.yml` pipeline.
 1. The pipeline authenticates with Docker Hub.
 2. Builds the `mean-frontend` and `mean-backend` images.
-3. Pushes the artifacts to Docker Hub.
+3. Pushes the artifacts to Docker Hub tagged with the short commit hash (e.g. `a1b2c3d`).
 4. Connects to the EC2 instance via SSH.
-5. Pulls the latest images and restarts the Docker Compose stack using `sudo -E docker compose up -d`.
+5. Pulls the commit-tagged images and restarts the Docker Compose stack using `sudo -E docker compose up -d`.
 
 ---
 
