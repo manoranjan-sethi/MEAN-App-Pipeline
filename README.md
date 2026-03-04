@@ -68,7 +68,7 @@ Once secrets are configured, any code pushed to the `main` branch (excluding cha
 
 ### 3. Application Deployment and Working UI
 *The application running live on the EC2 instance, accessible purely via Port 80 without port definitions.*
-**Live URL:** `http://3.83.123.167`
+**Live URL:** `http://44.202.62.151/`
 > [![App Hosted in ec2](screenshots/Pasted_image_(3).png)]
 
 ### 4. Nginx Setup and Infrastructure Details
